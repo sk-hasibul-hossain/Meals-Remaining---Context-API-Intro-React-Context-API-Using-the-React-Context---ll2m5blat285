@@ -1,21 +1,29 @@
-'use client'
-import React from "react";
-
+"use client";
+import React, { useContext } from "react";
+import { MealsContext } from "./MealsProvider";
 const MealsList = () => {
-
-    return (
-        <div>
-            <h2>Meals:</h2>
-            <ul>
-                <li>
-                    <input 
-                        type="checkbox"
-                    />
-                    mealName
-                </li>
-            </ul>
-        </div>
-    )
-}
+  const { mealList, tickMeal } = useContext(MealsContext);
+  return (
+    <div>
+      <h2>Meals:</h2>
+      <ul>
+        {mealList.map((meals) => {
+          return (
+            <li key={meals.id}>
+              <input
+                id={meals.id}
+                type="checkbox"
+                onChange={(event) => {
+                  tickMeal(event.target.checked);
+                }}
+              />
+              {meals.name}
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
+};
 
 export default MealsList;

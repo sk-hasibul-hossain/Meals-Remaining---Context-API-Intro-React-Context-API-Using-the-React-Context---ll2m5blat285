@@ -1,13 +1,13 @@
-'use client'
-import React from "react";
-
+"use client";
+import React, { useContext } from "react";
+import { MealsContext } from "./MealsProvider";
 const Counter = () => {
-
-    return (
-        <div>
-            <h3>Meals Remaining: remaingMeals</h3>
-        </div>
-    )
-}
+  const { count } = useContext(MealsContext);
+  return (
+    <div>
+      <h3>Meals Remaining: {count}</h3>
+    </div>
+  );
+};
 
 export default Counter;
